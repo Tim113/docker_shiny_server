@@ -1,4 +1,4 @@
-FROM r-base:3.4.2
+FROM r-base:3.4.3
 
 MAINTAINER Tim Jones "timothy.jones1@amey.co.uk"
 
@@ -13,12 +13,12 @@ RUN apt-get update && apt-get install -y -t unstable \
     libssl-dev \
     libssh2-1-dev \
     libxt-dev && \
-    wget --no-verbose "https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.3.838-amd64.deb" -O ss-stable.deb && \
+    wget --no-verbose "https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.6.875-amd64.deb" -O ss-stable.deb && \
     gdebi -n ss-stable.deb && \
     rm -f version.txt ss-stable.deb && \
     R -e "install.packages('devtools')"
     #&& \
-RUN R -e "devtools::install_version('shiny', version = '1.0.3', repos = 'http://cran.us.r-project.org')" && \
+RUN R -e "devtools::install_version('shiny', version = '1.0.5', repos = 'http://cran.us.r-project.org')" && \
     mkdir /srv/shiny-servers/ && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-servers/ && \
     rm -rf /var/lib/apt/lists/*
