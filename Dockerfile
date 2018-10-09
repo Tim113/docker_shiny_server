@@ -1,4 +1,4 @@
-FROM r-base:3.5.0
+FROM r-base:3.5.1
 
 MAINTAINER Tim Jones "timothy.jones1@amey.co.uk"
 
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y -t unstable \
     libssl-dev \
     libssh2-1-dev \
     libxt-dev && \
-    wget --no-verbose "https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.7.890-amd64.deb" -O ss-stable.deb && \
+    wget --no-verbose "https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.9.923-amd64.deb" -O ss-stable.deb && \
     gdebi -n ss-stable.deb && \
     rm -f version.txt ss-stable.deb && \
     R -e "install.packages('devtools')"
